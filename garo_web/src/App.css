@@ -1,0 +1,102 @@
+@import "@fontsource/bebas-neue";
+@import './styles/variables.css';
+
+body {
+  font-family: var(--fuente-principal);
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra todos los elementos */
+  background-color: var(--color-morado);
+  padding: 15px 20px; /* Aumentamos la altura de la navbar */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--color-morado-claro); /* Línea decorativa opcional */
+}
+
+.navbar .hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: var(--color-blanco);
+  cursor: pointer;
+}
+
+.navbar .menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 30px; /* Espaciado uniforme entre enlaces */
+}
+
+.navbar .menu.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; /* Alineado directamente debajo de la navbar */
+  left: 0;
+  right: 0;
+  background-color: var(--color-morado);
+  padding: 20px;
+  text-align: center;
+}
+
+.navbar .menu li a {
+  text-decoration: none;
+  color: var(--color-blanco);
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover {
+  color: var(--color-morado-claro);
+}
+
+.navbar .menu li a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--color-morado-claro);
+  transition: width 0.3s ease;
+  margin: 0 auto;
+}
+
+.navbar .menu li a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .hamburger {
+    display: block;
+    align-self: flex-end;
+  }
+
+  .navbar .menu {
+    display: none; /* Escondemos el menú por defecto en pantallas pequeñas */
+    width: 100%;
+  }
+
+  .navbar .menu.open {
+    display: flex; /* Muestra el menú al abrir */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para diferenciar el menú */
+  }
+
+  .navbar .menu li {
+    margin: 10px 0;
+  }
+}
